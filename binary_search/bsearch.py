@@ -14,12 +14,15 @@ def binary_search1(array, n):
     return
 
 def binary_search2(array, val):
+    #print(array)
     mid = (len(array) -1) // 2
     if array[mid] == val:
         return val
     elif array[mid] > val and mid - 1 > 0:
-        return binary_search2(array[:mid-1], val)
-    elif array[mid] < val and mid + 1 <(len(array)-1):
+        #print(">val:", array[mid])
+        return binary_search2(array[:mid], val)
+    elif array[mid] < val and mid + 1 <len(array):
+        #print("<val:", array[mid])
         return binary_search2(array[mid+1:], val)
     else:
         return 
