@@ -13,8 +13,19 @@ def binary_search1(array, n):
             low = mid + 1
     return
 
+def binary_search2(array, val):
+    mid = (len(array) -1) // 2
+    if array[mid] == val:
+        return val
+    elif array[mid] > val and mid - 1 > 0:
+        return binary_search2(array[:mid-1], val)
+    elif array[mid] < val and mid + 1 <(len(array)-1):
+        return binary_search2(array[mid+1:], val)
+    else:
+        return 
+    
 
 if __name__ == '__main__':
     array = list(range(1000))
-    r = binary_search1(array, 999)
+    r = binary_search2(array, 999)
     print(r)
