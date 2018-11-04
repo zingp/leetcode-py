@@ -41,3 +41,8 @@ array = list(range(10000))
 random.shuffle(array)
 merge_sort(array, 0, len(array)-1)
 print(array)
+
+
+# 总结一下归并排序
+# 1 合并数组low, mid, high(low, high 是数组的第一和最后一个元素的索引)
+# 2 递归写分最后合
