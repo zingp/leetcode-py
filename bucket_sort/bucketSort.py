@@ -1,5 +1,5 @@
 
-# 桶排序 同排序的时间复杂度和空间复杂度
+# 桶排序 同排序的时间复杂度O(n+k) O(n^2 *k)和空间复杂度O(nk)
 # 假设有10000个0-10000内的数排序
 def bucket_sort(array, n=100,  max_num=10000):
     tmpl = [[] for _ in range(n)]
