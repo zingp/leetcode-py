@@ -2,7 +2,7 @@ import math
 import random
 
 
-# 基数排序的平均时间复杂度是o(kn),其中k是最大数的位数
+# 基数排序的平均时间复杂度是o(kn),空间复杂度是O(K+N).其中k是最大数的位数
 def based_sort(array):
     max_num = max(array)
     w = int(math.log10(max_num)+1)
