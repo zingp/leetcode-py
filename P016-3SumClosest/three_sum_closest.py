@@ -33,7 +33,7 @@ class Solution:
                     min_diff = curr_diff
                     print("----", curr_diff)
                     min_sum = total_sum
-                if  l < r:
+                if l < r:
                     if diff < 0 and nums[i+1] < 0: 
                         r -= 1
                     elif diff < 0 and nums[i+1] >= 0: #[6]
@@ -44,6 +44,6 @@ class Solution:
                         r -= 1
         return min_sum
 
-# nums = [-1, 2, 1, -4]
-nums = [0,2,1,-3]
+nums = [-1, 2, 1, -4]
+# nums = [0,2,1,-3]
 print(Solution().threeSumClosest(nums, 1))
