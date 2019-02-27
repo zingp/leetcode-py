@@ -38,12 +38,13 @@ class Solution:
                         r -= 1
                     elif diff < 0 and nums[i+1] >= 0: #[6]
                         l += 1
-                    elif diff > 0 and nums[r-1] >0:
-                        l += 1
-                    else:
+                    elif diff > 0 and nums[i+1] >0:
                         r -= 1
+                    else:
+                        l += 1
         return min_sum
 
-nums = [-1, 2, 1, -4]
+# nums = [-1, 2, 1, -4]
 # nums = [0,2,1,-3]
-print(Solution().threeSumClosest(nums, 1))
+nums = [1,1,-1,-1,3]
+print(Solution().threeSumClosest(nums, -1))
