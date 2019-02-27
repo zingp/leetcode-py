@@ -24,25 +24,24 @@ class Solution:
                 print(i,l,r,"====",nums[i],nums[l], nums[r])
                 total_sum = nums[i] + nums[l] + nums[r]
                 print("total sum",total_sum,)
-                curr_diff = abs(total_sum - target)
+                diff = total_sum - target
+                curr_diff = abs(diff)
                 print("diff", curr_diff)
-
                 if curr_diff == 0:
                     return total_sum
-                elif curr_diff < min_diff:
+                if curr_diff < min_diff:
                     min_diff = curr_diff
                     print("----", curr_diff)
                     min_sum = total_sum
-                    while l<r and nums[l] == nums[l+1]: #[6]
+                if  l < r:
+                    if diff < 0 and nums[i+1] < 0: 
+                        r -= 1
+                    elif diff < 0 and nums[i+1] >= 0: #[6]
                         l += 1
-                    while l<r and nums[r] == nums[r-1]: #[6]
-                        r-=1
-                    l += 1
-                    r -= 1
-                    
-                else:
-                    l += 1
-                
+                    elif diff > 0 and nums[r-1] >0:
+                        l += 1
+                    else:
+                        r -= 1
         return min_sum
 
 # nums = [-1, 2, 1, -4]
