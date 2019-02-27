@@ -9,8 +9,9 @@ class Solution:
     def twoSum(self, nums, target):
         dic = {}
         for i in range(len(nums)):
-            if target - nums[i] in dic:
-                return [i, dic[target - nums[i]]]
+            n = target - nums[i]
+            if n in dic:
+                return [i, dic[n]]
             else:
                 dic[nums[i]] = i
 
@@ -23,3 +24,4 @@ class Solution:
                 return [i, index]
             else:
                 dic[n] = i
+                
