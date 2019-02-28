@@ -25,29 +25,28 @@ HashMap + 滑动窗口
 """
 class Solution:
     def lengthOfLongestSubstring(self, s):
-        start = max_len = 0    # start 是左指针，max_len 是最长长度
-        dic = {}
+        start = maxLen = 0    # start 是左指针，max_len 是最长长度
+        useDic = {}
         for i, v in enumerate(s):
             # 如果v在dic中，说明遇到了重复的字符串，需要移动左指针
-            if v in dic and start <= dic[v]:
-                start = dic[v] + 1
+            if v in useDic and start <= useDic[v]:
+                start = useDic[v] + 1
             # 当前长度是右指针-左指针+1，与历史最长相比取大者
-            max_len = max(max_len, i - start + 1)
-            dic[v] = i
-        return max_len
+            maxLen = max(maxLen, i - start + 1)
+            useDic[v] = i
+        return maxLen
 
     def lengthOfLongestSubstring2(self, s):
-        d={}
-        res=i=j=0
+        useDic = {}
+        res = i = j = 0
         for m in s:
-            if m in d:
-                i=  i if i>d[m] else d[m]
+            if m in useDic:
+                i = i if i>useDic[m] else useDic[m]
             res= res if res>=(j-i+1) else (j-i+1)
-            d[m]=j+1
-            j+=1
+            useDic[m] = j + 1
+            j += 1
         return res
                 
-
 s = "dvdf"
 print(Solution().lengthOfLongestSubstring(s))
 
