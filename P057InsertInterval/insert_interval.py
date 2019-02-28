@@ -47,6 +47,5 @@ class Solution:
                 res.append(curr)  
                 curr = intervals[i]
         # 如果循环完成
-        if i == length:
-            res.append(curr)
+        res.append(curr)
         return res
