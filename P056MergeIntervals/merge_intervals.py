@@ -22,4 +22,39 @@ class Interval:
 
 class Solution:
     def merge(self, intervals):
-        pass
+        length = len(intervals)
+        if length < 2:
+            return intervals
+        intervals.sort(key = lambda x: x.start)
+        res = []
+        curr = intervals[0]
+        for i in range(length):
+            if curr.end >= intervals[i].start:
+                curr = Interval(curr.start, max(curr.end, intervals[i].end))
+            else:
+                res.append(curr)
+                curr = intervals[i]
+        if i == (length - 1):
+            res.append(curr)
+        return res
+
+    def merge2(self, intervals):
+        out = []
+        for i in sorted(intervals, key=lambda i: i.start):
+            if out and i.start <= out[-1].end:
+                out[-1].end = max(out[-1].end, i.end)
+            else:
+                out += i,
+        return out
+
+node1 = Interval(8,10)
+node2 = Interval(1,3)
+node3 = Interval(2,6)
+node4 = Interval(15,18)
+# li = [[8,10],[1,3],[2,6],[15,18]]
+li = [node1, node2, node3, node4]
+li = [Interval(1,4), Interval(4,5)]
+res = Solution().merge(li)
+print("99999999")
+for i in range(len(res)):
+    print(res[i].start, res[i].end)
