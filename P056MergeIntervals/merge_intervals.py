@@ -23,6 +23,7 @@ class Interval:
 class Solution:
     def merge(self, intervals):
         length = len(intervals)
+        # 如果长度小于2，即长度等于0或者1直接返回自身
         if length < 2:
             return intervals
         intervals.sort(key = lambda x: x.start)
@@ -30,12 +31,12 @@ class Solution:
         curr = intervals[0]
         for i in range(length):
             if curr.end >= intervals[i].start:
-                curr = Interval(curr.start, max(curr.end, intervals[i].end))
+                curr.end = max(curr.end, intervals[i].end)
             else:
                 res.append(curr)
                 curr = intervals[i]
-        if i == (length - 1):
-            res.append(curr)
+        # 把最后一个curr添加到res中
+        res.append(curr)
         return res
 
     def merge2(self, intervals):
@@ -44,7 +45,7 @@ class Solution:
             if out and i.start <= out[-1].end:
                 out[-1].end = max(out[-1].end, i.end)
             else:
-                out += i,
+                out += i,  # 等价于 out += [i]
         return out
 
 node1 = Interval(8,10)
@@ -55,6 +56,8 @@ node4 = Interval(15,18)
 li = [node1, node2, node3, node4]
 li = [Interval(1,4), Interval(4,5)]
 res = Solution().merge(li)
-print("99999999")
-for i in range(len(res)):
-    print(res[i].start, res[i].end)
+print("--遍历--")
+r = []
+for i in res:
+    r.append([i.start, i.end])
+print(r)
