@@ -33,13 +33,16 @@ class SummaryRanges:
         curr = Interval(val,val)
         pos = 0
         for i in self.intervals:
-            # +1 是为了避免 判断完全隔开
+            # 如果插入区间的右端点+1比遍历到的区间的左端点小，说明完全分离的
+            # 此时插入区间应该查到遍历到的区间的前面，因此pos保持不变，i应该添加到列表中
             if curr.end+1 < i.start:
                 res.append(i)
+            # 这种情况 curr 应该插入到i+1的位置
             elif i.end+1 < curr.start:
                 res.append(i)
                 pos += 1
             else:
+                # 这种情况curr 有所变化，且应该插入到i的位置
                 curr.start = min(i.start, curr.start)
                 curr.end = max(i.end, curr.end)
         res.insert(pos, curr)
@@ -47,7 +50,6 @@ class SummaryRanges:
 
     def getIntervals(self):
         return self.intervals
-
 
 # Your SummaryRanges object will be instantiated and called as such:
 # obj = SummaryRanges()
