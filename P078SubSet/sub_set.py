@@ -19,15 +19,15 @@ import itertools
 
 class Solution:
     def subsets(self, nums):
-        ans = []
+        res = []
         def sub(bits):
             if len(bits) == len(nums):
-                ans.append(list(itertools.compress(nums, bits)))
+                res.append(list(itertools.compress(nums, bits)))
                 return
             sub(bits+[True])
             sub(bits+[False])
         sub([])
-        return ans
+        return res
 
 a = list(itertools.compress([1,2,3,4], [0,1,4,5]))
 li = [1,2,3]
